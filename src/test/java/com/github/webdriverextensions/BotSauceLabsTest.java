@@ -1,15 +1,27 @@
 package com.github.webdriverextensions;
 
 import static com.github.webdriverextensions.Bot.*;
-import com.github.webdriverextensions.junitrunner.WebDriverRunner;
-import com.github.webdriverextensions.junitrunner.annotations.*;
-
 import static org.hamcrest.Matchers.equalTo;
+
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.BrowserType;
+
+import com.github.webdriverextensions.junitrunner.WebDriverRunner;
+import com.github.webdriverextensions.junitrunner.annotations.Android;
+import com.github.webdriverextensions.junitrunner.annotations.Chrome;
+import com.github.webdriverextensions.junitrunner.annotations.Edge;
+import com.github.webdriverextensions.junitrunner.annotations.Firefox;
+import com.github.webdriverextensions.junitrunner.annotations.HtmlUnit;
+import com.github.webdriverextensions.junitrunner.annotations.IPad;
+import com.github.webdriverextensions.junitrunner.annotations.IPhone;
+import com.github.webdriverextensions.junitrunner.annotations.InternetExplorer;
+import com.github.webdriverextensions.junitrunner.annotations.Opera;
+import com.github.webdriverextensions.junitrunner.annotations.PhantomJS;
+import com.github.webdriverextensions.junitrunner.annotations.RemoteAddress;
+import com.github.webdriverextensions.junitrunner.annotations.Safari;
 
 @RunWith(WebDriverRunner.class)
 @RemoteAddress("http://andidev:80b7768e-dc06-4d5b-b793-5b3b83f0e24c@ondemand.saucelabs.com:80/wd/hub")
@@ -198,7 +210,8 @@ public class BotSauceLabsTest {
     @Test
     @Safari
     public void browserIsSafariTest() {
-        assertThat(browser(), equalTo(BrowserType.SAFARI));
+        assertThat(browser().toLowerCase(), 
+                equalTo(BrowserType.SAFARI.toLowerCase()));
         assertThat(browserIsNotAndroid(), equalTo(true));
         assertThat(browserIsNotChrome(), equalTo(true));
         assertThat(browserIsNotEdge(), equalTo(true));
